@@ -25,7 +25,8 @@ public class BoardForQueensPuzzle {
               filesWithQueens.
      */
     public BoardForQueensPuzzle( BoardForQueensPuzzle old) {
-        // your code here
+        lastRankFilled = old.lastRankFilled;
+        filesWithQueens = old.filesWithQueens;
     }
 
 

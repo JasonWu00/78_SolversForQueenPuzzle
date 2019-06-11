@@ -61,17 +61,32 @@ public class SolverForQueensPuzzle {
         // Which has been requested, a base case or recursive case?
             // your code here
             // action(s) for base case(s)
-            System.out.println( "  for debugging: base case detected for..."
+            if (inProgress.accept() || inProgress.lastIsNg()) {
+              if (inProgress.accept()) {
+                solutions.add(inProgress);
+              }
+              nBoardsConsidered++;
+              System.out.println( "  for debugging: base case detected for..."
                               + System.lineSeparator()
                               + inProgress
                               );
+            }
 
             // action for recursive cases
             // your code here
-            System.out.println( "  for debugging: recursive case detected for..."
+            else {
+              for(int files = 0; files < inProgress.ranks(); files++) {
+                BoardForQueensPuzzle backupCopy = new BoardForQueensPuzzle(inProgress);
+                inProgress.populate(files);
+                recordSolutionsStarted();
+                inProgress = backupCopy;
+              }
+              nBoardsConsidered++;
+              System.out.println( "  for debugging: recursive case detected for..."
                               + System.lineSeparator()
                               + inProgress
                               );
+            }
     }
 
 
